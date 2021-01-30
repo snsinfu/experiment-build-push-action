@@ -34,9 +34,19 @@ jobs:
             ${{ secrets.DOCKERHUB_REPOSITORY }}:${{ env.VERSION }}
           push: true
 
-      - uses: peter-evans/dockerhub-description@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ env.DOCKERHUB_REPOSITORY }}
-          readme-filepath: docker/README.md
+      # Docker Hub API does not support token authorization yet!
+      # https://github.com/peter-evans/dockerhub-description/issues/10
+      # https://github.com/docker/hub-feedback/issues/1914
+#     - uses: peter-evans/dockerhub-description@v2
+#       with:
+#         username: ${{ secrets.DOCKERHUB_USERNAME }}
+#         password: ${{ secrets.DOCKERHUB_TOKEN }}
+#         repository: ${{ secrets.DOCKERHUB_REPOSITORY }}
+
+      # This does not work either.
+#     - name: update docker hub long description
+#       run: .github/workflows/publish_readme.sh docker/README.md
+#       with:
+#         username: ${{ secrets.DOCKERHUB_USERNAME }}
+#         password: ${{ secrets.DOCKERHUB_TOKEN }}
+#         repository: ${{ env.DOCKERHUB_REPOSITORY }}
