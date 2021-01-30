@@ -32,6 +32,6 @@ jobs:
           file: docker/Dockerfile
           platforms: linux/amd64,linux/arm64
           tags: |
-            snsinfu/test-OlR9beWV:latest
-            snsinfu/test-OlR9beWV:${{ env.VERSION }}
+            snsinfu/test-r9zhesnz:latest
+            snsinfu/test-r9zhesnz:${{ env.VERSION }}
           push: true
